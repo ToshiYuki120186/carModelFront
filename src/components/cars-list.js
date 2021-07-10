@@ -43,6 +43,8 @@ const CarsList = props => {
     getModels(defaultMakeName, searchYear, searchType);
   }, []);
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div>
       <div className="row pb-1">
@@ -52,7 +54,7 @@ const CarsList = props => {
               event.preventDefault()
               getModels(searchMake, searchYear, searchType)
             }}>
-              <div className="input-group col-lg-4 mb-2" >
+              <div className="input-group col-lg-4 mb-4" >
                 <input
                   type="text"
                   className="form-control"
@@ -62,7 +64,7 @@ const CarsList = props => {
                   required
                 />
               </div>
-              <div className="input-group col-lg-4 mb-2">
+              <div className="input-group col-lg-4 mb-1">
                 <input
                   type="text"
                   className="form-control"
@@ -71,7 +73,10 @@ const CarsList = props => {
                   onChange={onChangeSearchYear}
                 />
               </div>
-              <div className="input-group col-lg-4 mb-2">
+              <div class="range mb-3">
+                <input type="range" class="form-range" init="2014" value={searchYear} min="1980" max={currentYear} id="customRange" onChange={onChangeSearchYear} />
+              </div>
+              <div className="input-group col-lg-4 mb-3">
                 <input
                   type="text"
                   className="form-control"
